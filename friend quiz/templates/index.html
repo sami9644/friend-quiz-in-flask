@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        * {
+            user-select: none;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #333;
+        }
+        .inputs {
+            margin-top: 2%;
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+
+        }
+        .inputs * {
+            margin-bottom: 2%;
+            font-size: 1.1rem;
+            font-family:'Courier New', Courier, monospace;
+            color: #fff;
+            
+        }
+        input {
+            outline: none;
+            padding: .3em;
+            border-radius: 10px;
+            background-color: transparent;
+            border: solid 1px;
+        }
+        input[type='range'] {
+            cursor: grab;
+        }
+        button {
+            background-color: #201f2e;
+            border: none;
+            padding: .3em;
+            cursor: pointer;
+        }
+        form {
+            max-width: 60%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friend quiz</title>
+</head>
+<body>
+    <form action="/takequiz" method="get">
+        <div class="inputs">
+            <label>What is your name</label>
+            <input type="text" name="your-name"  required>
+        </div>
+        <div class="inputs">
+            <label>What is the name of your friend?</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="inputs">
+            <label>What is the hobby of your friend</label>
+            <input type="text" name="hobby" required>
+        </div>
+        <div class="inputs">
+            <label>Do your friend considers you as his/her bestie</label>
+            <div class="radio">
+                <input type="radio" name="bestie" value="yes" required><b>Yes</b>
+            </div>
+            <div class="radio">
+            <input type="radio" name="bestie" id="No" required><b>No</b>
+            </div>
+        </div>
+        <div class="inputs">
+            <label>On scale of 1-10 how much you think your friend loves you?</label>
+            <input type="range" max="10" min="0" name="friendlove" value="2" required>
+        </div>
+        <div class="inputs">
+            <button type="submit">Submit</button>
+            <button type="reset">Reset form</button>
+        </div>
+    </form>
+    <script>
+        var inputs = document.querySelectorAll("input")
+        for (let i = 0;i < inputs.length;i++) {
+            inputs[i].autocomplete = 'off'
+        }
+    </script>
+</body>
+</html>
